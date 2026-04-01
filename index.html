@@ -486,7 +486,7 @@
         </div>
         <div class="session-info">
           <div class="session-title">Midday Sit</div>
-          <div class="session-detail">Monday – Friday</div>
+          <div class="session-detail">Monday – Friday &nbsp;·&nbsp; Closes 13:00</div>
           <div class="tags-row">
             <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online ↗</a>
             <span class="session-tag">In Person</span>
@@ -505,7 +505,7 @@
         </div>
         <div class="session-info">
           <div class="session-title">Mindful Lunch</div>
-          <div class="session-detail">Every Tuesday &nbsp;·&nbsp; Thich Nhat Hanh style</div>
+          <div class="session-detail">Every Tuesday &nbsp;·&nbsp; Thich Nhat Hanh style &nbsp;·&nbsp; Closes 13:00</div>
           <div class="tags-row">
             <span class="session-tag special">TNH Style</span>
             <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online ↗</a>
@@ -525,7 +525,7 @@
         </div>
         <div class="session-info">
           <div class="session-title">Plum Village Sangha</div>
-          <div class="session-detail">Monday Evenings</div>
+          <div class="session-detail">Monday Evenings &nbsp;·&nbsp; Closes 20:00</div>
           <div class="tags-row">
             <span class="session-tag special">Plum Village</span>
             <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online ↗</a>
@@ -544,7 +544,7 @@
         </div>
         <div class="session-info">
           <div class="session-title">Saturday Morning Sit</div>
-          <div class="session-detail">Every Saturday</div>
+          <div class="session-detail">Every Saturday &nbsp;·&nbsp; Closes 10:00</div>
           <div class="tags-row">
             <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online ↗</a>
             <a class="gcal-btn" href="#" onclick="addToGCal('saturday'); return false;">
@@ -775,10 +775,10 @@ function addToGCal(key) {
   const MO=1, TU=2, SA=6;
   const sessions = {
     morning:  { title:'Insightful Mind Sangha — Morning Sit',         dow:MO, startT:'063000', endT:'071500', days:'MO,TU,WE,TH,FR', details:'Morning meditation sit. Drop in anytime from 06:30, closes 07:15 UK time.\n\nJoin: https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha' },
-    midday:   { title:'Insightful Mind Sangha — Midday Sit',           dow:MO, startT:'123000', endT:'133000', days:'MO,TU,WE,TH,FR', details:'Midday meditation sit. Online and in person.\n\nJoin: https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha' },
-    lunch:    { title:'Insightful Mind Sangha — Mindful Lunch (TNH)',   dow:TU, startT:'123000', endT:'133000', days:'TU',             details:'Thich Nhat Hanh style mindful lunch. Every Tuesday.\n\nJoin: https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha' },
-    evening:  { title:'Insightful Mind Sangha — Plum Village Sangha',  dow:MO, startT:'190000', endT:'203000', days:'MO',             details:'Monday Night Plum Village Sangha.\n\nJoin: https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha' },
-    saturday: { title:'Insightful Mind Sangha — Saturday Morning Sit', dow:SA, startT:'093000', endT:'104500', days:'SA',             details:'Saturday morning meditation sit.\n\nJoin: https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha' }
+    midday:   { title:'Insightful Mind Sangha — Midday Sit',           dow:MO, startT:'123000', endT:'130000', days:'MO,TU,WE,TH,FR', details:'Midday meditation sit. Online and in person.\n\nJoin: https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha' },
+    lunch:    { title:'Insightful Mind Sangha — Mindful Lunch (TNH)',   dow:TU, startT:'123000', endT:'130000', days:'TU',             details:'Thich Nhat Hanh style mindful lunch. Every Tuesday.\n\nJoin: https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha' },
+    evening:  { title:'Insightful Mind Sangha — Plum Village Sangha',  dow:MO, startT:'190000', endT:'200000', days:'MO',             details:'Monday Night Plum Village Sangha.\n\nJoin: https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha' },
+    saturday: { title:'Insightful Mind Sangha — Saturday Morning Sit', dow:SA, startT:'093000', endT:'100000', days:'SA',             details:'Saturday morning meditation sit.\n\nJoin: https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha' }
   };
   const s = sessions[key];
   const date = nextDate(s.dow);
