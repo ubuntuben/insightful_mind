@@ -7,14 +7,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --sand: #e8e0d0;
-      --stone: #b5a898;
-      --moss: #7a8c6e;
-      --ember: #c4734a;
-      --mist: rgba(232,224,208,0.06);
-      --mist2: rgba(232,224,208,0.04);
+      --sand: #f5efe2;        /* brighter primary text */
+      --stone: #d4c8b5;       /* brighter secondary text (was #b5a898) */
+      --stone-dim: #a89c88;   /* for non-essential hints only */
+      --moss: #a8bf93;        /* brightened moss for visibility on dark bg */
+      --ember: #e89668;       /* brightened ember */
+      --mist: rgba(245,239,226,0.08);
+      --mist2: rgba(245,239,226,0.05);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }  /* was default 16px — ~12% bump */
     body {
       min-height: 100vh;
       background: #1e1a17;
@@ -22,9 +24,10 @@
       align-items: flex-start;
       justify-content: center;
       font-family: 'Jost', sans-serif;
-      font-weight: 200;
+      font-weight: 300;  /* was 200 — thicker strokes help contrast */
       color: var(--sand);
       padding: 2.5rem 1rem 3rem;
+      line-height: 1.5;
     }
     body::before {
       content: '';
@@ -36,7 +39,7 @@
     }
     .container {
       position: relative;
-      width: 100%; max-width: 500px;
+      width: 100%; max-width: 620px;
       text-align: center;
     }
     .bowl-wrap {
@@ -60,12 +63,12 @@
     }
     h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 300; font-size: 1.6rem;
+      font-weight: 400; font-size: 2rem;
       letter-spacing: 0.08em; color: var(--sand);
-      margin-bottom: 0.2rem; line-height: 1.25;
+      margin-bottom: 0.3rem; line-height: 1.25;
     }
     .subtitle {
-      font-size: 0.65rem; letter-spacing: 0.28em;
+      font-size: 0.8rem; letter-spacing: 0.28em;
       text-transform: uppercase; color: var(--stone);
     }
     .divider {
@@ -78,9 +81,9 @@
     }
     .divider-icon { font-size: 0.9rem; opacity: 0.35; }
     .section-heading {
-      font-size: 0.62rem; letter-spacing: 0.28em;
-      text-transform: uppercase; color: var(--stone);
-      text-align: center; margin-bottom: 1.2rem;
+      font-size: 0.78rem; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--sand);
+      text-align: center; margin-bottom: 1.4rem;
       position: relative;
     }
     .section-heading::before, .section-heading::after {
@@ -98,16 +101,16 @@
     }
     .field-group { text-align: center; }
     .field-label {
-      font-size: 0.65rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--stone);
+      font-size: 0.82rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--sand);
       margin-bottom: 0.7rem; display: block;
     }
     .minutes-input {
-      width: 90px; background: var(--mist);
-      border: 1px solid rgba(181,168,152,0.35);
+      width: 110px; background: var(--mist);
+      border: 1px solid rgba(212,200,181,0.5);
       border-radius: 2px; color: var(--sand);
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem; font-weight: 300;
+      font-size: 2.4rem; font-weight: 400;
       text-align: center; padding: 0.3rem 0.5rem;
       outline: none; transition: border-color 0.25s;
       -moz-appearance: textfield;
@@ -116,9 +119,9 @@
     .minutes-input::-webkit-outer-spin-button { -webkit-appearance: none; }
     .minutes-input:focus { border-color: var(--ember); }
     .field-hint {
-      font-size: 0.6rem; letter-spacing: 0.08em;
-      color: var(--stone); opacity: 0.65;
-      margin-top: 0.55rem; line-height: 1.5;
+      font-size: 0.75rem; letter-spacing: 0.04em;
+      color: var(--stone); opacity: 0.9;
+      margin-top: 0.7rem; line-height: 1.5;
       font-style: italic;
     }
     .bell-selector {
@@ -126,26 +129,26 @@
       gap: 0.5rem; flex-wrap: wrap;
     }
     .bell-btn {
-      width: 42px; height: 42px; border-radius: 50%;
-      border: 1px solid rgba(181,168,152,0.35);
-      background: var(--mist); color: var(--stone);
-      font-family: 'Jost', sans-serif; font-size: 0.95rem;
-      font-weight: 300; cursor: pointer;
+      width: 48px; height: 48px; border-radius: 50%;
+      border: 1px solid rgba(212,200,181,0.5);
+      background: var(--mist); color: var(--sand);
+      font-family: 'Jost', sans-serif; font-size: 1.1rem;
+      font-weight: 400; cursor: pointer;
       transition: all 0.25s ease;
       display: flex; align-items: center; justify-content: center;
     }
-    .bell-btn:hover { border-color: var(--stone); color: var(--sand); }
+    .bell-btn:hover { border-color: var(--sand); color: var(--sand); }
     .bell-btn.selected {
-      background: rgba(196,115,74,0.15);
+      background: rgba(232,150,104,0.2);
       border-color: var(--ember); color: var(--ember);
-      box-shadow: 0 0 18px rgba(196,115,74,0.2);
+      box-shadow: 0 0 18px rgba(232,150,104,0.25);
     }
     .begin-btn {
-      display: inline-block; padding: 0.85rem 3rem;
-      border: 1px solid rgba(181,168,152,0.4);
+      display: inline-block; padding: 0.95rem 3rem;
+      border: 1px solid rgba(212,200,181,0.55);
       background: transparent; color: var(--sand);
-      font-family: 'Jost', sans-serif; font-weight: 200;
-      font-size: 0.78rem; letter-spacing: 0.3em;
+      font-family: 'Jost', sans-serif; font-weight: 300;
+      font-size: 0.9rem; letter-spacing: 0.3em;
       text-transform: uppercase; cursor: pointer;
       transition: all 0.35s ease;
       position: relative; overflow: hidden;
@@ -163,31 +166,31 @@
     .mute-toggle {
       display: inline-flex; align-items: center; gap: 0.6rem;
       cursor: pointer; margin-top: 1.1rem;
-      font-size: 0.68rem; letter-spacing: 0.1em;
-      color: var(--stone); user-select: none;
+      font-size: 0.82rem; letter-spacing: 0.08em;
+      color: var(--sand); user-select: none;
     }
     .mute-toggle input { display: none; }
     .mute-box {
-      width: 14px; height: 14px; flex-shrink: 0;
-      border: 1px solid rgba(181,168,152,0.4);
+      width: 16px; height: 16px; flex-shrink: 0;
+      border: 1px solid rgba(212,200,181,0.55);
       background: var(--mist);
       position: relative; transition: border-color 0.2s, background 0.2s;
     }
     .mute-toggle input:checked ~ .mute-box {
       border-color: var(--ember);
-      background: rgba(196,115,74,0.15);
+      background: rgba(232,150,104,0.2);
     }
     .mute-toggle input:checked ~ .mute-box::after {
       content: '';
-      position: absolute; left: 3px; top: 0px;
-      width: 5px; height: 9px;
+      position: absolute; left: 4px; top: 0px;
+      width: 5px; height: 10px;
       border: 1.5px solid var(--ember);
       border-top: none; border-left: none;
       transform: rotate(40deg);
     }
-    .mute-toggle:hover .mute-box { border-color: var(--stone); }
+    .mute-toggle:hover .mute-box { border-color: var(--sand); }
     .mute-label-text { line-height: 1.4; text-align: left; }
-    .mute-hint { opacity: 0.55; font-size: 0.62rem; }
+    .mute-hint { opacity: 0.8; font-size: 0.75rem; color: var(--stone); }
 
     /* Unmute flash overlay */
     #unmuteFlash {
@@ -215,31 +218,36 @@
     .schedule { text-align: left; }
     .session-card {
       display: flex; align-items: flex-start;
-      gap: 1rem; padding: 0.85rem 1rem;
-      border-left: 1px solid rgba(181,168,152,0.15);
-      margin-bottom: 0.5rem; background: var(--mist2);
+      gap: 1.2rem; padding: 1rem 1.1rem;
+      border-left: 2px solid rgba(212,200,181,0.25);
+      margin-bottom: 0.6rem; background: var(--mist2);
       transition: border-color 0.2s, background 0.2s;
     }
     .session-card:hover {
       border-left-color: var(--ember);
-      background: rgba(196,115,74,0.04);
+      background: rgba(232,150,104,0.06);
     }
     .session-time-block {
-      min-width: 64px;
+      min-width: 78px;
       padding-top: 0.05rem;
       flex-shrink: 0;
     }
     .time-uk {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-weight: 300;
+      font-size: 1.6rem; font-weight: 400;
       color: var(--ember); line-height: 1;
       letter-spacing: 0.02em;
     }
+    .time-uk-label {
+      font-size: 0.65rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--stone);
+      margin-top: 0.3rem; line-height: 1.2;
+    }
     .time-local {
-      font-size: 0.64rem;
-      color: var(--stone);
-      letter-spacing: 0.05em;
-      margin-top: 0.25rem;
+      font-size: 0.78rem;
+      color: var(--sand);
+      letter-spacing: 0.02em;
+      margin-top: 0.3rem;
       line-height: 1.3;
       font-style: italic;
     }
@@ -247,27 +255,27 @@
     .session-info { flex: 1; }
     .session-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem; font-weight: 400;
-      color: var(--sand); margin-bottom: 0.15rem;
+      font-size: 1.25rem; font-weight: 500;
+      color: var(--sand); margin-bottom: 0.25rem;
       letter-spacing: 0.03em;
     }
     .session-detail {
-      font-size: 0.7rem; color: var(--stone);
-      letter-spacing: 0.05em; line-height: 1.5;
+      font-size: 0.88rem; color: var(--sand);
+      letter-spacing: 0.02em; line-height: 1.55;
     }
     .tags-row {
       display: flex; flex-wrap: wrap;
-      align-items: center; gap: 0.35rem;
-      margin-top: 0.45rem;
+      align-items: center; gap: 0.4rem;
+      margin-top: 0.55rem;
     }
     .session-tag {
-      display: inline-block; font-size: 0.56rem;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--moss); border: 1px solid rgba(122,140,110,0.4);
-      padding: 0.1rem 0.45rem;
+      display: inline-block; font-size: 0.68rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--moss); border: 1px solid rgba(168,191,147,0.55);
+      padding: 0.15rem 0.55rem;
     }
     .session-tag.special {
-      color: var(--ember); border-color: rgba(196,115,74,0.4);
+      color: var(--ember); border-color: rgba(232,150,104,0.55);
     }
     a.session-tag {
       text-decoration: none;
@@ -276,44 +284,82 @@
     }
     a.session-tag:hover {
       color: var(--sand); border-color: var(--moss);
-      background: rgba(122,140,110,0.1);
+      background: rgba(168,191,147,0.12);
     }
     .gcal-btn {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      font-size: 0.56rem; letter-spacing: 0.14em;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.68rem; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--stone);
-      border: 1px solid rgba(181,168,152,0.25);
-      padding: 0.1rem 0.5rem; background: transparent;
+      border: 1px solid rgba(212,200,181,0.4);
+      padding: 0.15rem 0.6rem; background: transparent;
       cursor: pointer; text-decoration: none;
       transition: color 0.2s, border-color 0.2s;
       font-family: 'Jost', sans-serif; font-weight: 300;
     }
-    .gcal-btn:hover { color: var(--sand); border-color: var(--stone); }
-    .gcal-icon { width: 10px; height: 10px; opacity: 0.7; }
+    .gcal-btn:hover { color: var(--sand); border-color: var(--sand); }
+    .gcal-icon { width: 11px; height: 11px; opacity: 0.8; }
 
     /* Timezone notice banner */
     .tz-notice {
-      font-size: 0.64rem; letter-spacing: 0.1em;
-      color: var(--stone); text-align: center;
-      margin-bottom: 0.8rem;
-      opacity: 0.7;
+      font-size: 0.82rem; letter-spacing: 0.06em;
+      color: var(--sand); text-align: center;
+      margin-bottom: 1rem;
+      opacity: 0.95;
     }
-    .tz-name { color: var(--sand); font-style: italic; }
+    .tz-name { color: var(--ember); font-style: italic; }
 
     .join-link {
-      text-align: center; margin-top: 1.2rem;
-      font-size: 0.68rem; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--stone);
+      text-align: center; margin-top: 1.4rem;
+      font-size: 0.85rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--sand);
     }
     .join-link a {
       color: var(--moss); text-decoration: none;
-      border-bottom: 1px solid rgba(122,140,110,0.35);
+      border-bottom: 1px solid rgba(168,191,147,0.5);
       padding-bottom: 1px;
       transition: color 0.2s, border-color 0.2s;
       font-family: 'Jost', sans-serif; font-weight: 300;
-      font-size: 0.75rem; letter-spacing: 0.05em;
+      font-size: 0.9rem; letter-spacing: 0.03em;
+      word-break: break-all;
     }
     .join-link a:hover { color: var(--sand); border-color: var(--sand); }
+
+    /* What we practice section */
+    .practice {
+      text-align: left;
+      padding: 0 0.5rem;
+    }
+    .practice p {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--sand);
+      margin-bottom: 0.9rem;
+      letter-spacing: 0.01em;
+    }
+    .practice p:last-child { margin-bottom: 0; }
+    .practice em { color: var(--ember); font-style: italic; }
+    .practice strong { color: var(--sand); font-weight: 500; }
+
+    /* Language toggle */
+    .lang-toggle {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .lang-toggle a {
+      display: inline-block;
+      font-size: 0.85rem; letter-spacing: 0.1em;
+      color: var(--moss);
+      text-decoration: none;
+      border: 1px solid rgba(168,191,147,0.5);
+      padding: 0.5rem 1.1rem;
+      transition: all 0.25s ease;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+    }
+    .lang-toggle a:hover {
+      color: var(--sand); border-color: var(--sand);
+      background: rgba(168,191,147,0.1);
+    }
 
     /* Session panel */
     #session { display: none; animation: fadeIn 1.2s ease; }
@@ -325,13 +371,13 @@
       font-variant-numeric: tabular-nums;
     }
     .countdown-label {
-      font-size: 0.65rem; letter-spacing: 0.28em;
+      font-size: 0.82rem; letter-spacing: 0.28em;
       text-transform: uppercase; color: var(--stone);
       margin-bottom: 1.8rem;
     }
     .timeline { position: relative; margin: 0.5rem 0 1.5rem; }
     .timeline-track {
-      height: 1px; background: rgba(181,168,152,0.2);
+      height: 1px; background: rgba(212,200,181,0.3);
       position: relative; margin: 1.8rem 0;
     }
     .timeline-fill {
@@ -346,29 +392,29 @@
       border: 1px solid var(--stone); background: #1e1a17;
       transition: all 0.5s ease;
     }
-    .bell-marker.start   { background: var(--ember); border-color: var(--ember); box-shadow: 0 0 10px rgba(196,115,74,0.5); }
+    .bell-marker.start   { background: var(--ember); border-color: var(--ember); box-shadow: 0 0 10px rgba(232,150,104,0.55); }
     .bell-marker.end     { background: var(--moss); border-color: var(--moss); }
-    .bell-marker.rung    { background: var(--ember); border-color: var(--ember); box-shadow: 0 0 10px rgba(196,115,74,0.4); }
-    .bell-marker.next-up { border-color: var(--sand); box-shadow: 0 0 8px rgba(232,224,208,0.3); }
+    .bell-marker.rung    { background: var(--ember); border-color: var(--ember); box-shadow: 0 0 10px rgba(232,150,104,0.45); }
+    .bell-marker.next-up { border-color: var(--sand); box-shadow: 0 0 8px rgba(245,239,226,0.4); }
     .marker-label {
-      position: absolute; top: 13px; left: 50%;
+      position: absolute; top: 14px; left: 50%;
       transform: translateX(-50%);
-      font-size: 0.58rem; letter-spacing: 0.06em;
+      font-size: 0.72rem; letter-spacing: 0.04em;
       color: var(--stone); white-space: nowrap;
     }
     .status-text {
       font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: 1.05rem;
-      color: var(--stone); min-height: 1.5rem;
+      font-style: italic; font-size: 1.25rem;
+      color: var(--sand); min-height: 1.5rem;
     }
     .next-bell-info {
-      font-size: 0.66rem; letter-spacing: 0.15em;
+      font-size: 0.82rem; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--stone);
-      opacity: 0.65; margin-top: 0.4rem; min-height: 1rem;
+      opacity: 0.9; margin-top: 0.5rem; min-height: 1rem;
     }
     .done-msg {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem; font-weight: 300;
+      font-size: 1.35rem; font-weight: 400;
       letter-spacing: 0.06em; color: var(--moss);
       margin-top: 1.2rem; opacity: 0;
       transition: opacity 1.5s ease;
@@ -380,7 +426,7 @@
     }
     @keyframes pulse-glow {
       0%, 100% { color: var(--sand); }
-      40% { color: var(--ember); text-shadow: 0 0 40px rgba(196,115,74,0.6); }
+      40% { color: var(--ember); text-shadow: 0 0 40px rgba(232,150,104,0.7); }
     }
     .ringing { animation: pulse-glow 1.8s ease; }
   </style>
@@ -388,8 +434,8 @@
 <body>
 <!-- Unmute reminder overlay -->
 <div id="unmuteFlash">
-  <div class="unmute-icon">🔔</div>
-  <div class="unmute-title">Unmute now</div>
+  <div class="unmute-icon">&#128276;</div>
+  <div class="unmute-title" id="unmuteTitle">Unmute now</div>
   <div class="unmute-sub" id="unmuteSubtext">Bell in 20 seconds</div>
 </div>
 
@@ -422,11 +468,141 @@
 
   <!-- SETUP PANEL -->
   <div id="setup">
+
+    <!-- Language toggle -->
+    <div class="lang-toggle">
+      <a href="#" id="langSwitchBtn" onclick="switchLang('es'); return false;">Cambiar a versión en español</a>
+    </div>
+
     <h1>Insightful Mind Sangha<br>Meditation</h1>
-    <p class="subtitle">Bell Timer</p>
+    <p class="subtitle">Silent sitting &middot; walking &middot; eating</p>
 
     <div class="divider"><span class="divider-icon">&#9675;</span></div>
-    <div class="section-heading">Start Timer</div>
+    <div class="section-heading">Session Schedule</div>
+
+    <!-- Timezone notice — filled by JS -->
+    <div class="tz-notice" id="tzNotice"></div>
+
+    <div class="schedule">
+
+      <div class="session-card">
+        <div class="session-time-block">
+          <div class="time-uk">06:30</div>
+          <div class="time-uk-label">UK/GMT</div>
+          <div class="time-local" id="local-morning"></div>
+        </div>
+        <div class="session-info">
+          <div class="session-title">Morning Sit</div>
+          <div class="session-detail">Monday &ndash; Friday &nbsp;&middot;&nbsp; Closes 07:15<br>Drop in anytime, stay as long as you wish</div>
+          <div class="tags-row">
+            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online &#8599;</a>
+            <a class="gcal-btn" href="#" onclick="addToGCal('morning'); return false;">
+              <svg class="gcal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Add to Calendar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-time-block">
+          <div class="time-uk">12:30</div>
+          <div class="time-uk-label">UK/GMT</div>
+          <div class="time-local" id="local-midday"></div>
+        </div>
+        <div class="session-info">
+          <div class="session-title">Midday Sit</div>
+          <div class="session-detail">Monday &ndash; Friday &nbsp;&middot;&nbsp; Closes 13:00</div>
+          <div class="tags-row">
+            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online &#8599;</a>
+            <span class="session-tag">In Person</span>
+            <a class="gcal-btn" href="#" onclick="addToGCal('midday'); return false;">
+              <svg class="gcal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Add to Calendar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-time-block">
+          <div class="time-uk">12:30</div>
+          <div class="time-uk-label">UK/GMT</div>
+          <div class="time-local" id="local-lunch"></div>
+        </div>
+        <div class="session-info">
+          <div class="session-title">Mindful Lunch</div>
+          <div class="session-detail">Every Tuesday &nbsp;&middot;&nbsp; Thich Nhat Hanh style &nbsp;&middot;&nbsp; Closes 13:00</div>
+          <div class="tags-row">
+            <span class="session-tag special">TNH Style</span>
+            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online &#8599;</a>
+            <span class="session-tag">In Person</span>
+            <a class="gcal-btn" href="#" onclick="addToGCal('lunch'); return false;">
+              <svg class="gcal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Add to Calendar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-time-block">
+          <div class="time-uk">19:00</div>
+          <div class="time-uk-label">UK/GMT</div>
+          <div class="time-local" id="local-evening"></div>
+        </div>
+        <div class="session-info">
+          <div class="session-title">Plum Village Sangha</div>
+          <div class="session-detail">Monday Evenings &nbsp;&middot;&nbsp; Closes 20:00</div>
+          <div class="tags-row">
+            <span class="session-tag special">Plum Village</span>
+            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online &#8599;</a>
+            <a class="gcal-btn" href="#" onclick="addToGCal('evening'); return false;">
+              <svg class="gcal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Add to Calendar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-time-block">
+          <div class="time-uk">09:30</div>
+          <div class="time-uk-label">UK/GMT</div>
+          <div class="time-local" id="local-saturday"></div>
+        </div>
+        <div class="session-info">
+          <div class="session-title">Saturday Morning Sit</div>
+          <div class="session-detail">Every Saturday &nbsp;&middot;&nbsp; Closes 10:00</div>
+          <div class="tags-row">
+            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online &#8599;</a>
+            <a class="gcal-btn" href="#" onclick="addToGCal('saturday'); return false;">
+              <svg class="gcal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Add to Calendar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="join-link">
+        Join online &nbsp;&middot;&nbsp;
+        <a href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha</a>
+      </div>
+    </div>
+
+    <!-- What we practice -->
+    <div class="divider"><span class="divider-icon">&#9675;</span></div>
+    <div class="section-heading">What We Practice</div>
+    <div class="practice">
+      <p>The majority of our practices are <strong>silent</strong>, <strong>walking</strong>, <strong>eating</strong>, and <strong>sangha-style</strong> practices.</p>
+      <p>Our favourite teachers are <em>Thich Nhat Hanh's</em> style of Zen and <em>Robert Burbea</em>.</p>
+      <p>Our purpose is to enjoy our good feelings and reduce suffering through <strong>breathing</strong>, <strong>noting</strong>, <strong>walking</strong>, <strong>eating</strong> &amp; <strong>listening</strong> meditations.</p>
+      <p>On <strong>Tuesday</strong> we do a mindful lunch, and we normally have lots of <em>metta</em> all week.</p>
+    </div>
+
+    <!-- Bells & Timer — moved to bottom -->
+    <div class="divider"><span class="divider-icon">&#9675;</span></div>
+    <div class="section-heading">Bells &amp; Timer</div>
     <div class="fields">
       <div class="field-group">
         <label class="field-label">Session minutes</label>
@@ -450,30 +626,43 @@
     <label class="mute-toggle" id="muteToggleLabel">
       <input type="checkbox" id="muteToggle">
       <span class="mute-box"></span>
-      <span class="mute-label-text">Unmute reminders &nbsp;<span class="mute-hint">— audible cue 20 s before each bell</span></span>
+      <span class="mute-label-text">Unmute reminders &nbsp;<span class="mute-hint">&mdash; audible cue 20 s before each bell</span></span>
     </label>
 
-    <div class="divider"><span class="divider-icon">&#9675;</span></div>
-    <div class="section-heading">Session Schedule</div>
+  </div>
 
-    <!-- Timezone notice — filled by JS -->
-    <div class="tz-notice" id="tzNotice"></div>
+  <!-- SETUP PANEL — SPANISH -->
+  <div id="setup-es" style="display:none;">
+
+    <!-- Language toggle -->
+    <div class="lang-toggle">
+      <a href="#" onclick="switchLang('en'); return false;">Switch to English version</a>
+    </div>
+
+    <h1>Insightful Mind Sangha<br>Meditaci&oacute;n</h1>
+    <p class="subtitle">Sentada silenciosa &middot; caminando &middot; comiendo</p>
+
+    <div class="divider"><span class="divider-icon">&#9675;</span></div>
+    <div class="section-heading">Horario de sesiones</div>
+
+    <div class="tz-notice" id="tzNoticeEs"></div>
 
     <div class="schedule">
 
       <div class="session-card">
         <div class="session-time-block">
           <div class="time-uk">06:30</div>
-          <div class="time-local" id="local-morning"></div>
+          <div class="time-uk-label">UK/GMT</div>
+          <div class="time-local" id="local-morning-es"></div>
         </div>
         <div class="session-info">
-          <div class="session-title">Morning Sit</div>
-          <div class="session-detail">Monday – Friday &nbsp;·&nbsp; Closes 07:15<br>Drop in anytime, stay as long as you wish</div>
+          <div class="session-title">Sentada de la ma&ntilde;ana</div>
+          <div class="session-detail">Lunes &ndash; Viernes &nbsp;&middot;&nbsp; Finaliza 07:15<br>Entra cuando quieras, qu&eacute;date el tiempo que desees</div>
           <div class="tags-row">
-            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online ↗</a>
+            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">En l&iacute;nea &#8599;</a>
             <a class="gcal-btn" href="#" onclick="addToGCal('morning'); return false;">
               <svg class="gcal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Add to Calendar
+              A&ntilde;adir al calendario
             </a>
           </div>
         </div>
@@ -482,17 +671,18 @@
       <div class="session-card">
         <div class="session-time-block">
           <div class="time-uk">12:30</div>
-          <div class="time-local" id="local-midday"></div>
+          <div class="time-uk-label">UK/GMT</div>
+          <div class="time-local" id="local-midday-es"></div>
         </div>
         <div class="session-info">
-          <div class="session-title">Midday Sit</div>
-          <div class="session-detail">Monday – Friday &nbsp;·&nbsp; Closes 13:00</div>
+          <div class="session-title">Sentada del mediod&iacute;a</div>
+          <div class="session-detail">Lunes &ndash; Viernes &nbsp;&middot;&nbsp; Finaliza 13:00</div>
           <div class="tags-row">
-            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online ↗</a>
-            <span class="session-tag">In Person</span>
+            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">En l&iacute;nea &#8599;</a>
+            <span class="session-tag">Presencial</span>
             <a class="gcal-btn" href="#" onclick="addToGCal('midday'); return false;">
               <svg class="gcal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Add to Calendar
+              A&ntilde;adir al calendario
             </a>
           </div>
         </div>
@@ -501,18 +691,19 @@
       <div class="session-card">
         <div class="session-time-block">
           <div class="time-uk">12:30</div>
-          <div class="time-local" id="local-lunch"></div>
+          <div class="time-uk-label">UK/GMT</div>
+          <div class="time-local" id="local-lunch-es"></div>
         </div>
         <div class="session-info">
-          <div class="session-title">Mindful Lunch</div>
-          <div class="session-detail">Every Tuesday &nbsp;·&nbsp; Thich Nhat Hanh style &nbsp;·&nbsp; Closes 13:00</div>
+          <div class="session-title">Comida consciente</div>
+          <div class="session-detail">Cada martes &nbsp;&middot;&nbsp; Estilo Thich Nhat Hanh &nbsp;&middot;&nbsp; Finaliza 13:00</div>
           <div class="tags-row">
-            <span class="session-tag special">TNH Style</span>
-            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online ↗</a>
-            <span class="session-tag">In Person</span>
+            <span class="session-tag special">Estilo TNH</span>
+            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">En l&iacute;nea &#8599;</a>
+            <span class="session-tag">Presencial</span>
             <a class="gcal-btn" href="#" onclick="addToGCal('lunch'); return false;">
               <svg class="gcal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Add to Calendar
+              A&ntilde;adir al calendario
             </a>
           </div>
         </div>
@@ -521,17 +712,18 @@
       <div class="session-card">
         <div class="session-time-block">
           <div class="time-uk">19:00</div>
-          <div class="time-local" id="local-evening"></div>
+          <div class="time-uk-label">UK/GMT</div>
+          <div class="time-local" id="local-evening-es"></div>
         </div>
         <div class="session-info">
-          <div class="session-title">Plum Village Sangha</div>
-          <div class="session-detail">Monday Evenings &nbsp;·&nbsp; Closes 20:00</div>
+          <div class="session-title">Sangha de Plum Village</div>
+          <div class="session-detail">Lunes por la tarde &nbsp;&middot;&nbsp; Finaliza 20:00</div>
           <div class="tags-row">
             <span class="session-tag special">Plum Village</span>
-            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online ↗</a>
+            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">En l&iacute;nea &#8599;</a>
             <a class="gcal-btn" href="#" onclick="addToGCal('evening'); return false;">
               <svg class="gcal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Add to Calendar
+              A&ntilde;adir al calendario
             </a>
           </div>
         </div>
@@ -540,34 +732,75 @@
       <div class="session-card">
         <div class="session-time-block">
           <div class="time-uk">09:30</div>
-          <div class="time-local" id="local-saturday"></div>
+          <div class="time-uk-label">UK/GMT</div>
+          <div class="time-local" id="local-saturday-es"></div>
         </div>
         <div class="session-info">
-          <div class="session-title">Saturday Morning Sit</div>
-          <div class="session-detail">Every Saturday &nbsp;·&nbsp; Closes 10:00</div>
+          <div class="session-title">Sentada del s&aacute;bado por la ma&ntilde;ana</div>
+          <div class="session-detail">Cada s&aacute;bado &nbsp;&middot;&nbsp; Finaliza 10:00</div>
           <div class="tags-row">
-            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">Online ↗</a>
+            <a class="session-tag" href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">En l&iacute;nea &#8599;</a>
             <a class="gcal-btn" href="#" onclick="addToGCal('saturday'); return false;">
               <svg class="gcal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Add to Calendar
+              A&ntilde;adir al calendario
             </a>
           </div>
         </div>
       </div>
 
       <div class="join-link">
-        Join online &nbsp;·&nbsp;
+        Uni&eacute;ndose en l&iacute;nea &nbsp;&middot;&nbsp;
         <a href="https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha" target="_blank" rel="noopener">https://8x8.vc/vpaas-magic-cookie-ad6d488cd4de4212bea63a0615a27c94/insightful-mind-sangha</a>
       </div>
     </div>
+
+    <!-- Qu&eacute; practicamos -->
+    <div class="divider"><span class="divider-icon">&#9675;</span></div>
+    <div class="section-heading">Qu&eacute; practicamos</div>
+    <div class="practice">
+      <p>La mayor&iacute;a de nuestras pr&aacute;cticas son <strong>silenciosas</strong>, <strong>caminando</strong>, <strong>comiendo</strong>, y al <strong>estilo sangha</strong>.</p>
+      <p>Nuestros maestros preferidos son el estilo de Zen de <em>Thich Nhat Hanh</em> y <em>Robert Burbea</em>.</p>
+      <p>Nuestro prop&oacute;sito es disfrutar de nuestras buenas sensaciones y reducir el sufrimiento a trav&eacute;s de meditaciones de <strong>respiraci&oacute;n</strong>, <strong>observaci&oacute;n</strong>, <strong>caminata</strong>, <strong>comida</strong> y <strong>escucha</strong>.</p>
+      <p>Los <strong>martes</strong> hacemos una comida consciente, y normalmente tenemos mucha <em>metta</em> durante toda la semana.</p>
+    </div>
+
+    <!-- Campanas y temporizador -->
+    <div class="divider"><span class="divider-icon">&#9675;</span></div>
+    <div class="section-heading">Campanas y temporizador</div>
+    <div class="fields">
+      <div class="field-group">
+        <label class="field-label">Minutos de la sesi&oacute;n</label>
+        <input class="minutes-input" id="minutesInputEs" type="number" min="1" max="120" value="30">
+        <div class="field-hint">Cuenta hasta la siguiente media hora.<br>Aj&uacute;stalo libremente.</div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Campanas individuales</label>
+        <div class="bell-selector" id="bellSelectorEs">
+          <button class="bell-btn selected" data-val="0">0</button>
+          <button class="bell-btn" data-val="1">1</button>
+          <button class="bell-btn" data-val="2">2</button>
+          <button class="bell-btn" data-val="3">3</button>
+          <button class="bell-btn" data-val="4">4</button>
+          <button class="bell-btn" data-val="5">5</button>
+        </div>
+      </div>
+    </div>
+    <button class="begin-btn" id="beginBtnEs">Comenzar sesi&oacute;n</button>
+
+    <label class="mute-toggle">
+      <input type="checkbox" id="muteToggleEs">
+      <span class="mute-box"></span>
+      <span class="mute-label-text">Activar recordatorios sonoros &nbsp;<span class="mute-hint">&mdash; aviso audible 20 s antes de cada campana</span></span>
+    </label>
+
   </div>
 
   <!-- SESSION PANEL -->
   <div id="session">
-    <h1 style="margin-bottom:0.15rem;">Insightful Mind Sangha<br>Meditation</h1>
-    <p class="subtitle" style="margin-bottom:1.5rem;">Bell Timer</p>
+    <h1 style="margin-bottom:0.15rem;" id="sessionTitle">Insightful Mind Sangha<br>Meditation</h1>
+    <p class="subtitle" style="margin-bottom:1.5rem;" id="sessionSubtitle">Bell Timer</p>
     <div class="countdown" id="countdown">--:--</div>
-    <div class="countdown-label">remaining</div>
+    <div class="countdown-label" id="countdownLabel">remaining</div>
     <div class="timeline">
       <div class="timeline-track" id="timelineTrack">
         <div class="timeline-fill" id="timelineFill"></div>
@@ -671,27 +904,72 @@
     { id: 'saturday', h: 9,  m: 30 },
   ];
 
+  // Get a pretty display label for a timezone, including its abbreviation.
+  // Special-cases CET (Berlin/Paris/Madrid all share this) to show "Madrid/CET".
+  function prettyTzLabel(tz) {
+    if (!tz) return '';
+    // Get timezone abbreviation (GMT, BST, CET, CEST, EST, etc.)
+    let abbrev = '';
+    try {
+      const parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: tz, timeZoneName: 'short'
+      }).formatToParts(new Date());
+      const tzPart = parts.find(p => p.type === 'timeZoneName');
+      if (tzPart) abbrev = tzPart.value;
+    } catch(e) {}
+
+    // Cities that share CET/CEST — prefer "Madrid" as the display city
+    const cetZones = ['Europe/Madrid','Europe/Berlin','Europe/Paris',
+                      'Europe/Rome','Europe/Amsterdam','Europe/Brussels',
+                      'Europe/Vienna','Europe/Zurich','Europe/Warsaw',
+                      'Europe/Prague','Europe/Copenhagen','Europe/Stockholm',
+                      'Europe/Oslo','Europe/Budapest'];
+    let city;
+    if (cetZones.indexOf(tz) !== -1) {
+      city = 'Madrid';
+    } else {
+      city = tz.split('/').pop().replace(/_/g, ' ');
+    }
+    return abbrev ? city + '/' + abbrev : city;
+  }
+
   const inLondon = isLondonTz();
   const tzName = localTzName();
+  const localLabel = prettyTzLabel(tzName);
 
-  // Show timezone notice only when visitor isn't in UK
+  // English timezone notice
   const notice = document.getElementById('tzNotice');
   if (!inLondon && tzName) {
-    // Pretty-print timezone: "America/New_York" → "New York"
-    const pretty = tzName.split('/').pop().replace(/_/g, ' ');
-    notice.innerHTML = 'UK times shown &nbsp;·&nbsp; <span class="tz-name">' + pretty + '</span> times in italics below';
+    notice.innerHTML = 'UK/GMT times shown &nbsp;&middot;&nbsp; <span class="tz-name">' + localLabel + '</span> times in italics below';
+  } else if (inLondon) {
+    notice.innerHTML = 'All times <span class="tz-name">UK/GMT</span>';
+  }
+
+  // Spanish timezone notice
+  const noticeEs = document.getElementById('tzNoticeEs');
+  if (noticeEs) {
+    if (!inLondon && tzName) {
+      noticeEs.innerHTML = 'Horarios en UK/GMT &nbsp;&middot;&nbsp; horarios <span class="tz-name">' + localLabel + '</span> en cursiva abajo';
+    } else if (inLondon) {
+      noticeEs.innerHTML = 'Todos los horarios en <span class="tz-name">UK/GMT</span>';
+    }
   }
 
   sessions.forEach(function(s) {
+    // English elements
     const el = document.getElementById('local-' + s.id);
-    if (!el) return;
+    // Spanish elements
+    const elEs = document.getElementById('local-' + s.id + '-es');
+
     if (inLondon) {
-      el.classList.add('same-tz');
+      if (el) el.classList.add('same-tz');
+      if (elEs) elEs.classList.add('same-tz');
       return;
     }
     const localDate = ukHHMMtoLocal(s.h, s.m);
     const localStr  = formatLocal(localDate);
-    el.textContent  = localStr + ' your time';
+    if (el)   el.textContent   = localStr + ' ' + localLabel;
+    if (elEs) elEs.textContent = localStr + ' ' + localLabel;
   });
 })();
 
@@ -795,9 +1073,14 @@ function addToGCal(key) {
 
 // ── Timer ────────────────────────────────────────────────────────────────────
 const setupEl       = document.getElementById('setup');
+const setupEsEl     = document.getElementById('setup-es');
 const sessionEl     = document.getElementById('session');
 const beginBtn      = document.getElementById('beginBtn');
+const beginBtnEs    = document.getElementById('beginBtnEs');
 const minutesInput  = document.getElementById('minutesInput');
+const minutesInputEs= document.getElementById('minutesInputEs');
+const muteToggle    = document.getElementById('muteToggle');
+const muteToggleEs  = document.getElementById('muteToggleEs');
 const countdownEl   = document.getElementById('countdown');
 const statusText    = document.getElementById('statusText');
 const nextBellInfo  = document.getElementById('nextBellInfo');
@@ -807,14 +1090,57 @@ const timelineTrack = document.getElementById('timelineTrack');
 const r1=document.getElementById('r1'), r2=document.getElementById('r2'), r3=document.getElementById('r3');
 
 let selectedBells=0, timerInterval=null, scheduledTimeouts=[];
+let currentLang = 'en';
 
-document.getElementById('bellSelector').addEventListener('click', e => {
+// ── Language switching ──────────────────────────────────────────────────────
+function switchLang(lang) {
+  currentLang = lang;
+  const unmuteTitleEl = document.getElementById('unmuteTitle');
+  if (lang === 'es') {
+    setupEl.style.display   = 'none';
+    setupEsEl.style.display = 'block';
+    document.documentElement.lang = 'es';
+    if (unmuteTitleEl) unmuteTitleEl.textContent = 'Quita el silencio';
+  } else {
+    setupEl.style.display   = 'block';
+    setupEsEl.style.display = 'none';
+    document.documentElement.lang = 'en';
+    if (unmuteTitleEl) unmuteTitleEl.textContent = 'Unmute now';
+  }
+  // Ensure inputs stay in sync when switching
+  if (minutesInputEs) minutesInputEs.value = minutesInput.value;
+  if (muteToggleEs)   muteToggleEs.checked = muteToggle.checked;
+  syncBellSelectors();
+}
+
+// Bell selector click handler — works for BOTH English and Spanish selectors,
+// keeps them in sync via a single selectedBells state variable.
+function handleBellClick(e) {
   const btn = e.target.closest('.bell-btn');
   if (!btn) return;
-  document.querySelectorAll('.bell-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
   selectedBells = parseInt(btn.dataset.val);
-});
+  syncBellSelectors();
+}
+function syncBellSelectors() {
+  document.querySelectorAll('.bell-btn').forEach(b => {
+    if (parseInt(b.dataset.val) === selectedBells) b.classList.add('selected');
+    else b.classList.remove('selected');
+  });
+}
+document.getElementById('bellSelector').addEventListener('click', handleBellClick);
+const bellSelectorEs = document.getElementById('bellSelectorEs');
+if (bellSelectorEs) bellSelectorEs.addEventListener('click', handleBellClick);
+
+// Keep minutes inputs in sync both directions
+if (minutesInputEs) {
+  minutesInput.addEventListener('input', () => { minutesInputEs.value = minutesInput.value; });
+  minutesInputEs.addEventListener('input', () => { minutesInput.value = minutesInputEs.value; });
+}
+// Keep mute toggles in sync
+if (muteToggleEs) {
+  muteToggle.addEventListener('change',   () => { muteToggleEs.checked = muteToggle.checked; });
+  muteToggleEs.addEventListener('change', () => { muteToggle.checked = muteToggleEs.checked; });
+}
 
 function triggerRipple() {
   [r1,r2,r3].forEach((r,i) => {
@@ -833,6 +1159,9 @@ function formatTime(ms) {
 
 function buildTimeline(offsets, totalMs) {
   timelineTrack.querySelectorAll('.bell-marker').forEach(m => m.remove());
+  const labels = currentLang === 'es'
+    ? { three: '3 campanas', single: 'campana ' }
+    : { three: '3 bells',    single: 'bell ' };
   function addMarker(pct, cls, label) {
     const div=document.createElement('div');
     div.className='bell-marker '+cls; div.style.left=pct+'%';
@@ -840,9 +1169,9 @@ function buildTimeline(offsets, totalMs) {
     lbl.className='marker-label'; lbl.textContent=label;
     div.appendChild(lbl); timelineTrack.appendChild(div); return div;
   }
-  addMarker(0,'start','3 bells');
-  offsets.forEach((t,i) => addMarker((t/totalMs)*100,'single-marker','bell '+(i+1)));
-  addMarker(100,'end','3 bells');
+  addMarker(0,'start',labels.three);
+  offsets.forEach((t,i) => addMarker((t/totalMs)*100,'single-marker',labels.single+(i+1)));
+  addMarker(100,'end',labels.three);
 }
 
 function scheduleAt(fn, ms) {
@@ -859,14 +1188,24 @@ function scheduleAt(fn, ms) {
     return Math.max(1, remaining);
   }
   minutesInput.value = minsToNextHalf();
+  if (minutesInputEs) minutesInputEs.value = minutesInput.value;
   minutesInput.addEventListener('input', function() { userEdited = true; });
   minutesInput.addEventListener('focus', function() { userEdited = true; });
+  if (minutesInputEs) {
+    minutesInputEs.addEventListener('input', function() { userEdited = true; });
+    minutesInputEs.addEventListener('focus', function() { userEdited = true; });
+  }
   setInterval(function() {
-    if (!userEdited) minutesInput.value = minsToNextHalf();
+    if (!userEdited) {
+      const v = minsToNextHalf();
+      minutesInput.value = v;
+      if (minutesInputEs) minutesInputEs.value = v;
+    }
   }, 1000);
 })();
 
-beginBtn.addEventListener('click', async () => {
+// Begin session — shared handler used by both English and Spanish buttons
+async function beginSession() {
   const minutes = parseFloat(minutesInput.value);
   if (!minutes||minutes<=0) { minutesInput.focus(); return; }
   await initAudio();
@@ -875,44 +1214,85 @@ beginBtn.addEventListener('click', async () => {
   const offsets=[];
   for (let i=1;i<=n;i++) offsets.push((totalMs/(n+1))*i);
 
-  setupEl.style.display='none'; sessionEl.style.display='block';
+  // Hide whichever setup panel is visible
+  setupEl.style.display='none';
+  if (setupEsEl) setupEsEl.style.display='none';
+  sessionEl.style.display='block';
   buildTimeline(offsets,totalMs);
-  statusText.textContent='Three bells to begin…';
+
+  // Localize session panel chrome (subtitle, "remaining", closing blessing)
+  const subtitleEl  = document.getElementById('sessionSubtitle');
+  const cdLabelEl   = document.getElementById('countdownLabel');
+  const doneMsgEl   = document.getElementById('doneMsg');
+  if (currentLang === 'es') {
+    if (subtitleEl) subtitleEl.textContent = 'Temporizador de campanas';
+    if (cdLabelEl)  cdLabelEl.textContent  = 'restante';
+    if (doneMsgEl)  doneMsgEl.textContent  = 'Que tu mente est\u00e9 clara y tu coraz\u00f3n en paz.';
+  } else {
+    if (subtitleEl) subtitleEl.textContent = 'Bell Timer';
+    if (cdLabelEl)  cdLabelEl.textContent  = 'remaining';
+    if (doneMsgEl)  doneMsgEl.textContent  = 'May your mind be clear and your heart at peace.';
+  }
+
+  // Localize status/next-bell text based on current language
+  const strings = currentLang === 'es' ? {
+    threeBellsBegin:   'Tres campanas para empezar…',
+    inProgress:        'Meditaci&oacute;n en curso',
+    nextBellIn:        'Siguiente campana en ',
+    closingAtEnd:      'Campanas de cierre al final de la sesi&oacute;n',
+    singleBell:        'Campana &uacute;nica',
+    bellOf:            function(i, total) { return 'Campana ' + i + ' de ' + total; },
+    singleCueSoon:     'Campana &uacute;nica en 20 segundos',
+    bellCueSoon:       function(i, total) { return 'Campana ' + i + ' de ' + total + ' en 20 segundos'; },
+    closingCueSoon:    'Campanas de cierre en 20 segundos',
+    threeBellsClose:   'Tres campanas para cerrar…'
+  } : {
+    threeBellsBegin:   'Three bells to begin…',
+    inProgress:        'Meditation in progress',
+    nextBellIn:        'Next bell in ',
+    closingAtEnd:      'Closing bells at the end of session',
+    singleBell:        'Single bell',
+    bellOf:            function(i, total) { return 'Bell ' + i + ' of ' + total; },
+    singleCueSoon:     'Single bell in 20 seconds',
+    bellCueSoon:       function(i, total) { return 'Bell ' + i + ' of ' + total + ' in 20 seconds'; },
+    closingCueSoon:    'Closing bells in 20 seconds',
+    threeBellsClose:   'Three bells to close…'
+  };
+
+  statusText.innerHTML=strings.threeBellsBegin;
   countdownEl.textContent=formatTime(totalMs);
 
   playThreeBells(() => {
-    statusText.textContent='Meditation in progress';
-    nextBellInfo.textContent = n>0
-      ? 'Next bell in '+formatTime(offsets[0])
-      : 'Closing bells at the end of session';
+    statusText.innerHTML=strings.inProgress;
+    nextBellInfo.innerHTML = n>0
+      ? strings.nextBellIn + formatTime(offsets[0])
+      : strings.closingAtEnd;
     const markers=timelineTrack.querySelectorAll('.single-marker');
     if (markers[0]) markers[0].classList.add('next-up');
   });
 
   offsets.forEach((offset,idx) => {
-    // Unmute cue 20 s before each single bell
-    const cueLabel = n===1 ? 'Single bell in 20 seconds' : 'Bell '+(idx+1)+' of '+n+' in 20 seconds';
+    const cueLabel = n===1 ? strings.singleCueSoon : strings.bellCueSoon(idx+1, n);
     scheduleAt(() => fireUnmuteCue(cueLabel), offset - UNMUTE_LEAD);
 
     scheduleAt(() => {
       playOneBell();
       statusText.classList.remove('ringing'); void statusText.offsetWidth; statusText.classList.add('ringing');
-      statusText.textContent = n===1?'Single bell':'Bell '+(idx+1)+' of '+n;
+      statusText.innerHTML = n===1 ? strings.singleBell : strings.bellOf(idx+1, n);
       setTimeout(()=>statusText.classList.remove('ringing'),2000);
       const markers=timelineTrack.querySelectorAll('.single-marker');
       if (markers[idx])   { markers[idx].classList.remove('next-up'); markers[idx].classList.add('rung'); }
       if (markers[idx+1]) markers[idx+1].classList.add('next-up');
-      nextBellInfo.textContent = offsets[idx+1]!==undefined
-        ? 'Next bell in '+formatTime(offsets[idx+1]-offset)
-        : 'Closing bells at the end of session';
+      nextBellInfo.innerHTML = offsets[idx+1]!==undefined
+        ? strings.nextBellIn + formatTime(offsets[idx+1]-offset)
+        : strings.closingAtEnd;
     },offset);
   });
 
-  // Unmute cue 20 s before closing bells
-  scheduleAt(() => fireUnmuteCue('Closing bells in 20 seconds'), totalMs - UNMUTE_LEAD);
+  scheduleAt(() => fireUnmuteCue(strings.closingCueSoon), totalMs - UNMUTE_LEAD);
 
   scheduleAt(() => {
-    statusText.textContent='Three bells to close…'; nextBellInfo.textContent='';
+    statusText.innerHTML=strings.threeBellsClose; nextBellInfo.textContent='';
     playThreeBells(() => {
       doneMsg.classList.add('show'); statusText.textContent='';
       clearInterval(timerInterval); countdownEl.textContent='0:00';
@@ -925,7 +1305,10 @@ beginBtn.addEventListener('click', async () => {
     countdownEl.textContent=formatTime(remaining);
     timelineFill.style.width=Math.min((elapsed/totalMs)*100,100)+'%';
   },500);
-});
+}
+
+beginBtn.addEventListener('click', beginSession);
+if (beginBtnEs) beginBtnEs.addEventListener('click', beginSession);
 </script>
 </body>
 </html>
